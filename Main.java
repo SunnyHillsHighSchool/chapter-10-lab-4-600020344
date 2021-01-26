@@ -31,9 +31,9 @@ class Main {
   System.out.println("XLIX is " + test.getNumber() + "\n");
 
   test.setRoman("XX");
-  out.println("XX is " + test.getNumber() + "\n");
+  System.out.println("XX is " + test.getNumber() + "\n");
 
-  test.setRoman("XLIX");
-  System.out.println("XLIX is " + test.getNumber() + "\n");
+  test.setRoman("XXXVIII");
+  System.out.println("XXXVIII is " + test.getNumber() + "\n");
   }
 }
