@@ -17,41 +17,75 @@ public class RomanNumeral
 
 	public RomanNumeral(String str)
 	{
-
-
-
+    roman = str;
 	}
 
 	public RomanNumeral(Integer orig)
 	{
-
-
-
+    number = orig;
 	}
 
 	public void setNumber(Integer num)
 	{
-
-
-
-
-
+    number = num;
 	}
 
 	public void setRoman(String rom)
 	{
-
-
-
+    roman = rom;
 	}
 
+  public static int inLetters(String s)
+  {
+    for (int i = 0; i<LETTERS.length; i++)
+    {
+      if (s.equals(LETTERS[i]))
+      {
+        return i;
+      }
+    }
+    return -1;
+  }
 	public Integer getNumber()
 	{
-		return number;
+    int num = 0;
+    for (int i = 0; i<roman.length();i++)
+    {
+      if (inLetters(roman.substring(i,i+1))!=-1)
+      {
+        if(i<roman.length()-1)
+        {
+          if(inLetters(roman.substring(i,i+2))!=-1)
+          {
+            num+=NUMBERS[inLetters(roman.substring(i,i+2))];
+            i++;            
+          } else {
+          num+=NUMBERS[inLetters(roman.substring(i,i+1))];
+          }
+        } else {
+          num+=NUMBERS[inLetters(roman.substring(i,i+1))];
+        }
+      }
+    }
+    return num;
 	}
 
 	public String toString()
 	{
-		return roman + "\n";
+		String rom = "";
+    int temp = number;
+    while (temp>0)
+    {
+      for (int i = 0; i<NUMBERS.length; i++)
+      {
+        if (NUMBERS[i]<=temp)
+        {
+          rom+=LETTERS[i];
+          temp-=NUMBERS[i];
+          break;
+        }
+      }
+    }
+    return rom;
 	}
 }
